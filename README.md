@@ -27,5 +27,5 @@ docker-compose -up -d
 ```
 Set up docker-compose and up container each project.  
 
-Credits:
+Credits:  
 [https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion](https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion)
