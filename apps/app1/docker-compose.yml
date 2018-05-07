@@ -1,0 +1,42 @@
+# Example - Rails project
+# Expose 3000 in your Dockerfile
+
+version: '3'
+
+networks:
+  default:
+    driver: bridge
+  webproxy: # <-- CHANGE TO NAME OF NETWORK IN .ENV FILE (default: webproxy)
+    external: true
+
+services:
+  app:
+    build: .
+    networks:
+      - webproxy # <-- SAME HERE
+      - default
+    ports:
+      - 81:3000
+    depends_on:
+      - db
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - RAILS_MAX_THREADS=1
+      - VIRTUAL_ROOT=/app/public
+      - VIRTUAL_HOST=hostapp1.com, www.hostapp1.com
+      - LETSENCRYPT_HOST=hostapp1.com, www.hostapp1.com
+      - VIRTUAL_PORT=81
+    restart: unless-stopped
+
+  db:
+    image: postgres
+    ports:
+      - 5434:5432
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /storage/postgres/app1/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    restart: unless-stopped
