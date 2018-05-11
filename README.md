@@ -1,6 +1,6 @@
 # Web Proxy using Docker, NGINX and Let's Encrypt
 
-Copy `.env.sample` to `.env`
+Copy `.env.sample` to `.env` (`/nginx` folder)
 ```
 cp .env.sample .env
 ```
