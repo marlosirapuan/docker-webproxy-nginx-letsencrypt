@@ -16,7 +16,7 @@ source .env
 docker network create $NETWORK
 ```
 
-If you want to update the nginx template:
+Run command below to copy nginx template:
 ```
 curl https://raw.githubusercontent.com/jwilder/nginx-proxy/master/nginx.tmpl > nginx.tmpl
 ```
