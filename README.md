@@ -23,7 +23,7 @@ curl https://raw.githubusercontent.com/jwilder/nginx-proxy/master/nginx.tmpl > n
 
 Run
 ```
-docker-compose -up -d
+docker-compose up -d
 ```
 Set up docker-compose and up container each project.  
 
